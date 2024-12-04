@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Web Application</title>
+</head>
+<body bgcolor="#d4a3ae">
+    <center>
+        <h1>Our First LLM Web Application Based on Llama and Flask</h1>
+        <div>
+            <h3>Chat History</h3>
+            <div style="width: 80%; background-color: #f0f0f0; padding: 10px;">
+                {% for msg in messages %}
+                    <p>
+                        {% if msg["role"] == "user" %}
+                            <strong>You:</strong> {{ msg["content"] }}
+                        {% elif msg["role"] == "assistant" %}
+                            <strong>Assistant:</strong> {{ msg["content"] }}
+                        {% endif %}
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <form method="POST" action="/">
+            <label for="user_input">Ask a question:</label><br>
+            <input type="text" id="user_input" name="user_input" required><br><br>
+            <input type="submit" value="Send">
+        </form>
+    </center>
+</body>
+</html>
